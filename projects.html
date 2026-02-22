@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 Behind the Scenes — Projects | Space Jam HQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .project-card {
+      background: rgba(0,0,40,0.65);
+      border: 1px solid rgba(0,207,255,0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 18px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: rgba(0,207,255,0.5);
+      box-shadow: 0 0 22px rgba(0,207,255,0.15);
+    }
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .project-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 6px rgba(0,207,255,0.4));
+    }
+    .project-title {
+      font-family: var(--font-main);
+      font-size: 1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
+    .project-meta {
+      font-size: 0.7rem;
+      color: #7777aa;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .project-desc {
+      font-size: 0.83rem;
+      color: #c0c0e0;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .proj--blue   { border-left: 3px solid var(--neon-blue);   }
+    .proj--blue   .project-title { color: var(--neon-blue);   text-shadow: 0 0 8px rgba(0,207,255,0.4);   }
+    .proj--green  { border-left: 3px solid var(--neon-green);  }
+    .proj--green  .project-title { color: var(--neon-green);  text-shadow: 0 0 8px rgba(57,255,20,0.4);   }
+    .proj--pink   { border-left: 3px solid var(--neon-pink);   }
+    .proj--pink   .project-title { color: var(--neon-pink);   text-shadow: 0 0 8px rgba(255,0,204,0.4);   }
+    .proj--yellow { border-left: 3px solid var(--neon-yellow); }
+    .proj--yellow .project-title { color: var(--neon-yellow); text-shadow: 0 0 8px rgba(255,230,0,0.4);   }
+    .proj--orange { border-left: 3px solid var(--neon-orange); }
+    .proj--orange .project-title { color: var(--neon-orange); text-shadow: 0 0 8px rgba(255,102,0,0.4);   }
+    .proj--teal   { border-left: 3px solid var(--neon-teal);   }
+    .proj--teal   .project-title { color: var(--neon-teal);   text-shadow: 0 0 8px rgba(0,255,224,0.4);   }
+    .proj--purple { border-left: 3px solid var(--neon-purple); }
+    .proj--purple .project-title { color: var(--neon-purple); text-shadow: 0 0 8px rgba(204,0,255,0.4);   }
+
+    .link--github  { background: rgba(57,255,20,0.1);  color: var(--neon-green);  border: 1px solid rgba(57,255,20,0.35);  }
+    .link--demo    { background: rgba(0,207,255,0.1);  color: var(--neon-blue);   border: 1px solid rgba(0,207,255,0.35);  }
+    .link--article { background: rgba(255,230,0,0.1);  color: var(--neon-yellow); border: 1px solid rgba(255,230,0,0.35);  }
+    a.link--github:hover  { box-shadow: 0 0 12px rgba(57,255,20,0.3);  }
+    a.link--demo:hover    { box-shadow: 0 0 12px rgba(0,207,255,0.3);  }
+    a.link--article:hover { box-shadow: 0 0 12px rgba(255,230,0,0.3);  }
+  </style>
+</head>
+<body>
+<canvas id="starfield-canvas"></canvas>
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <div class="logo-container">
+      <div class="logo-main">Space Jam HQ</div>
+      <span class="logo-sub">✦ Behind the Scenes ✦</span>
+    </div>
+    <br>
+    <button class="music-btn" onclick="toggleMusic(this)">🔊 PLAY MUSIC</button>
+  </header>
+
+  <hr class="neon-divider">
+
+  <a href="index.html" class="back-link">← Back to Main Court</a>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-grid">
+      <a href="about.html"    class="nav-btn nav-btn--purple"><span class="btn-icon">🏀</span><span class="btn-label">About Me</span></a>
+      <a href="projects.html" class="nav-btn nav-btn--green" ><span class="btn-icon">🎬</span><span class="btn-label">Projects</span></a>
+      <a href="skills.html"   class="nav-btn nav-btn--teal"  ><span class="btn-icon">⭐</span><span class="btn-label">Skills</span></a>
+      <a href="hobbies.html"  class="nav-btn nav-btn--yellow"><span class="btn-icon">👾</span><span class="btn-label">Hobbies</span></a>
+      <a href="contact.html"  class="nav-btn nav-btn--orange"><span class="btn-icon">📬</span><span class="btn-label">Contact</span></a>
+    </div>
+  </nav>
+
+  <hr class="neon-divider">
+
+  <!-- ══ INTRO ══════════════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--green">🎬 The Production Floor</h2>
+    <p>
+      Every great movie has behind-the-scenes magic. Every great developer has a graveyard of side projects, experiments,
+      and that one app that was <em>definitely</em> going to change the world. Here's mine.
+    </p>
+    <div class="marquee-wrap mt-12">
+      <span class="marquee-inner" style="color:var(--neon-green)">
+        ✦ FEATURED PROJECTS &nbsp;✦&nbsp; WEB APPS &middot; OPEN SOURCE &middot; EXPERIMENTS &nbsp;✦&nbsp; ALWAYS BUILDING &nbsp;✦&nbsp;
+      </span>
+    </div>
+  </div>
+
+  <!-- ══ FEATURED PROJECTS ═════════════════════════ -->
+
+  <div class="project-card proj--blue">
+    <div class="project-header">
+      <span class="project-icon">🌌</span>
+      <div>
+        <div class="project-title">CosmicBoard</div>
+        <div class="project-meta">React · Node.js · WebSockets · PostgreSQL &nbsp;|&nbsp; 2024</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      A real-time collaborative whiteboard app built for distributed teams. Features live cursors,
+      shape tools, sticky notes, and end-to-end encryption. Handles 500+ concurrent users per room.
+      Used by 3 small startups after a ProductHunt launch.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--blue">Real-time</span>
+      <span class="tag tag--green">Open Source</span>
+      <span class="tag tag--teal">WebSockets</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ GitHub</a>
+      <a href="#" class="project-link link--demo">▶ Live Demo</a>
+    </div>
+  </div>
+
+  <div class="project-card proj--pink">
+    <div class="project-header">
+      <span class="project-icon">🤖</span>
+      <div>
+        <div class="project-title">NeuralNotes</div>
+        <div class="project-meta">TypeScript · OpenAI API · SQLite · Electron &nbsp;|&nbsp; 2023</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      A desktop note-taking app powered by local AI summarisation. Paste any article or paste raw notes;
+      the app auto-generates bullet summaries, action items, and smart tags. Works 100% offline after the
+      initial model download.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--pink">AI/ML</span>
+      <span class="tag tag--yellow">Desktop</span>
+      <span class="tag tag--blue">TypeScript</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ GitHub</a>
+      <a href="#" class="project-link link--article">📰 Blog Post</a>
+    </div>
+  </div>
+
+  <div class="project-card proj--yellow">
+    <div class="project-header">
+      <span class="project-icon">📊</span>
+      <div>
+        <div class="project-title">PulseMetrics</div>
+        <div class="project-meta">Vue 3 · Python (FastAPI) · ClickHouse &nbsp;|&nbsp; 2023</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      An open-source analytics dashboard for small SaaS companies who can't afford Amplitude.
+      Event ingestion, funnel analysis, cohort retention, and custom SQL queries — all self-hostable
+      on a $5 VPS.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--yellow">Analytics</span>
+      <span class="tag tag--green">Self-hosted</span>
+      <span class="tag tag--orange">Python</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ GitHub</a>
+      <a href="#" class="project-link link--demo">▶ Live Demo</a>
+    </div>
+  </div>
+
+  <div class="project-card proj--teal">
+    <div class="project-header">
+      <span class="project-icon">🔐</span>
+      <div>
+        <div class="project-title">VaultPass</div>
+        <div class="project-meta">Vanilla JS · Web Crypto API · IndexedDB &nbsp;|&nbsp; 2022</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      A zero-dependency browser-based password manager. Uses the Web Crypto API for AES-256-GCM
+      encryption and stores everything in IndexedDB. No server, no accounts, no tracking.
+      Pure client-side security.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--teal">Security</span>
+      <span class="tag tag--blue">Vanilla JS</span>
+      <span class="tag tag--purple">Zero-dep</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ GitHub</a>
+      <a href="#" class="project-link link--demo">▶ Try It</a>
+    </div>
+  </div>
+
+  <div class="project-card proj--orange">
+    <div class="project-header">
+      <span class="project-icon">🏀</span>
+      <div>
+        <div class="project-title">SpaceJam96.css</div>
+        <div class="project-meta">CSS · HTML · Zero-JS &nbsp;|&nbsp; 2022</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      A CSS framework that makes any webpage look like the 1996 Space Jam website. Because why not.
+      Add one &lt;link&gt; tag and watch your modern React app turn into beautiful Internet Explorer 3 hell.
+      500+ GitHub stars and still going.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--orange">CSS</span>
+      <span class="tag tag--yellow">Retro</span>
+      <span class="tag tag--pink">Fun Project</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ GitHub</a>
+      <a href="#" class="project-link link--article">📰 Blog Post</a>
+    </div>
+  </div>
+
+  <div class="project-card proj--purple">
+    <div class="project-header">
+      <span class="project-icon">🌐</span>
+      <div>
+        <div class="project-title">This Website</div>
+        <div class="project-meta">HTML · CSS · Vanilla JS · No Frameworks &nbsp;|&nbsp; 2024</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      The site you're looking at right now. A love letter to the chaotic, unhinged beauty of 1996
+      web design, rebuilt with modern tech under the hood. Animated starfield canvas, Web Audio API music,
+      CSS-only animations, and not a single npm package.
+    </div>
+    <div class="tag-list">
+      <span class="tag tag--purple">Meta</span>
+      <span class="tag tag--blue">HTML/CSS/JS</span>
+      <span class="tag tag--green">90s Vibes</span>
+    </div>
+    <div class="project-links mt-8">
+      <a href="#" class="project-link link--github">⬡ View Source</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>🏀 Space Jam Personal HQ &copy; 2024 — <a href="index.html">Home</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script src="js/starfield.js"></script>
+<script src="js/music.js"></script>
+</body>
+</html>

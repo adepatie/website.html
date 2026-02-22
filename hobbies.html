@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>👾 Fun Stuff — Hobbies & Fun Facts | Space Jam HQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fun-facts-list { list-style: none; padding: 0; }
+    .fun-facts-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,230,0,0.1);
+      font-size: 0.85rem;
+      color: #c8c8e8;
+      line-height: 1.5;
+    }
+    .fun-facts-list li:last-child { border-bottom: none; }
+    .fun-facts-list li .emoji { font-size: 1.1rem; flex-shrink: 0; }
+
+    .pixel-art {
+      display: inline-block;
+      font-size: 3rem;
+      line-height: 1;
+      animation: pixel-bounce 0.8s steps(2) infinite;
+    }
+    @keyframes pixel-bounce {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    .playlist {
+      list-style: none;
+      padding: 0;
+    }
+    .playlist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: #c8c8e8;
+      transition: background 0.15s;
+    }
+    .playlist li:hover { background: rgba(255,255,255,0.04); }
+    .playlist .track-num {
+      width: 20px;
+      text-align: right;
+      color: #666699;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+    }
+    .playlist .track-name { flex: 1; }
+    .playlist .track-time {
+      color: #666699;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      font-family: var(--font-main);
+    }
+    .reading-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,207,255,0.1);
+      font-size: 0.83rem;
+    }
+    .reading-item:last-child { border-bottom: none; }
+    .book-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .book-title {
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      color: var(--neon-blue);
+      margin-bottom: 2px;
+    }
+    .book-author { color: #8888bb; font-size: 0.74rem; }
+    .book-note { color: #c0c0e0; margin-top: 3px; }
+  </style>
+</head>
+<body>
+<canvas id="starfield-canvas"></canvas>
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <div class="logo-container">
+      <div class="logo-main">Space Jam HQ</div>
+      <span class="logo-sub">✦ Fun Stuff ✦</span>
+    </div>
+    <br>
+    <button class="music-btn" onclick="toggleMusic(this)">🔊 PLAY MUSIC</button>
+  </header>
+
+  <hr class="neon-divider">
+
+  <a href="index.html" class="back-link">← Back to Main Court</a>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-grid">
+      <a href="about.html"    class="nav-btn nav-btn--purple"><span class="btn-icon">🏀</span><span class="btn-label">About Me</span></a>
+      <a href="projects.html" class="nav-btn nav-btn--green" ><span class="btn-icon">🎬</span><span class="btn-label">Projects</span></a>
+      <a href="skills.html"   class="nav-btn nav-btn--teal"  ><span class="btn-icon">⭐</span><span class="btn-label">Skills</span></a>
+      <a href="hobbies.html"  class="nav-btn nav-btn--yellow"><span class="btn-icon">👾</span><span class="btn-label">Hobbies</span></a>
+      <a href="contact.html"  class="nav-btn nav-btn--orange"><span class="btn-icon">📬</span><span class="btn-label">Contact</span></a>
+    </div>
+  </nav>
+
+  <hr class="neon-divider">
+
+  <!-- ══ INTRO ══════════════════════════════════════ -->
+  <div class="content-panel text-center">
+    <h2 class="section-title title--yellow" style="justify-content:center">
+      <span class="css-star">⭐</span> Life Beyond the Terminal <span class="css-star">⭐</span>
+    </h2>
+    <p>Not every waking moment is spent writing code (only most of them). Here's what keeps me sane.</p>
+    <div class="mt-12">
+      <span class="pixel-art">👾</span>
+      &nbsp;&nbsp;
+      <span class="pixel-art" style="animation-delay:0.2s">🎮</span>
+      &nbsp;&nbsp;
+      <span class="pixel-art" style="animation-delay:0.4s">🎸</span>
+      &nbsp;&nbsp;
+      <span class="pixel-art" style="animation-delay:0.6s">📚</span>
+      &nbsp;&nbsp;
+      <span class="pixel-art" style="animation-delay:0.8s">🏀</span>
+    </div>
+  </div>
+
+  <!-- ══ HOBBIES GRID ══════════════════════════════ -->
+  <div class="three-col">
+    <div class="card card--purple">
+      <h3>🎮 Retro Gaming</h3>
+      <p>
+        I collect and restore vintage consoles. Current count: 11 systems from the NES to the PS2.
+        Current obsession: getting a perfect score in the original Donkey Kong.
+      </p>
+    </div>
+    <div class="card card--green">
+      <h3>🎸 Guitar</h3>
+      <p>
+        Self-taught since 2015. I play mostly alternative rock and 90s grunge.
+        I'm in a casual band called "Runtime Error" that plays exactly 0 gigs per year.
+      </p>
+    </div>
+    <div class="card card--teal">
+      <h3>📚 Reading</h3>
+      <p>
+        50+ books a year. Split between sci-fi novels, technical books, and the occasional
+        biography of a person who also drank too much coffee.
+      </p>
+    </div>
+    <div class="card card--orange">
+      <h3>🏀 Basketball</h3>
+      <p>
+        Weekly pickup games. Not as good as the Tune Squad but trying.
+        My free throw percentage is classified information.
+      </p>
+    </div>
+    <div class="card card--pink">
+      <h3>🍕 Cooking</h3>
+      <p>
+        Self-taught home cook. Specialty: pasta from scratch. Weak point: anything
+        that requires timing two things at once. Story of my life.
+      </p>
+    </div>
+    <div class="card card--yellow">
+      <h3>🌌 Astronomy</h3>
+      <p>
+        Amateur stargazer. Own a 6" reflector telescope. Best sighting so far:
+        Jupiter's moons on a clear October night. Absolutely worth the 2 AM alarm.
+      </p>
+    </div>
+  </div>
+
+  <hr class="neon-divider">
+
+  <!-- ══ FUN FACTS ══════════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--pink">🎲 50 Fun Facts (Well, 10)</h2>
+    <ul class="fun-facts-list">
+      <li><span class="emoji">🏀</span>I can name every player on the 1996 Tune Squad roster from memory. Yes, even Tweety Bird.</li>
+      <li><span class="emoji">💾</span>My first website was about my hamster and used every available HTML tag, including &lt;blink&gt;.</li>
+      <li><span class="emoji">☕</span>I've never started a programming session before my second coffee. This is not negotiable.</li>
+      <li><span class="emoji">🌙</span>My best commits are at 1 AM. My worst bugs are also at 1 AM. Correlation noted.</li>
+      <li><span class="emoji">🎸</span>I named my guitar "Segfault". She sounds better than she compiles.</li>
+      <li><span class="emoji">🤖</span>I once spent 3 hours automating a 2-minute task because "it's the principle".</li>
+      <li><span class="emoji">📺</span>I've watched every episode of The IT Crowd at least 4 times. Have you tried turning it off and on again?</li>
+      <li><span class="emoji">🔭</span>I named my telescope "Hubble Jr." It has earned 0% of that name.</li>
+      <li><span class="emoji">🍕</span>My record: 7 homemade pizzas in a single day (testing different dough hydrations). Still perfecting it.</li>
+      <li><span class="emoji">🧩</span>I solve at least one LeetCode problem every morning. Not for interviews — just to feel something.</li>
+    </ul>
+  </div>
+
+  <!-- ══ MUSIC PLAYLIST ════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--teal">🎵 Coding Playlist</h2>
+    <p style="margin-bottom:12px">What I'm listening to while I push commits at 1 AM:</p>
+    <ul class="playlist">
+      <li><span class="track-num">1</span><span class="track-name">Quad City DJ's — Space Jam Theme</span><span class="track-time">3:47</span></li>
+      <li><span class="track-num">2</span><span class="track-name">Daft Punk — Harder Better Faster Stronger</span><span class="track-time">3:45</span></li>
+      <li><span class="track-num">3</span><span class="track-name">The Prodigy — Breathe</span><span class="track-time">5:35</span></li>
+      <li><span class="track-num">4</span><span class="track-name">Rage Against the Machine — Bulls on Parade</span><span class="track-time">3:51</span></li>
+      <li><span class="track-num">5</span><span class="track-name">Nirvana — Smells Like Teen Spirit</span><span class="track-time">5:01</span></li>
+      <li><span class="track-num">6</span><span class="track-name">Aphex Twin — Windowlicker</span><span class="track-time">9:44</span></li>
+      <li><span class="track-num">7</span><span class="track-name">Kavinsky — Nightcall</span><span class="track-time">4:17</span></li>
+      <li><span class="track-num">8</span><span class="track-name">Justice — D.A.N.C.E.</span><span class="track-time">3:42</span></li>
+    </ul>
+  </div>
+
+  <!-- ══ READING LIST ══════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--blue">📚 Recently Read</h2>
+    <div class="reading-item">
+      <span class="book-icon">📖</span>
+      <div>
+        <div class="book-title">The Pragmatic Programmer</div>
+        <div class="book-author">David Thomas &amp; Andrew Hunt</div>
+        <div class="book-note">Mandatory reading. Re-read it every year.</div>
+      </div>
+    </div>
+    <div class="reading-item">
+      <span class="book-icon">🚀</span>
+      <div>
+        <div class="book-title">Project Hail Mary</div>
+        <div class="book-author">Andy Weir</div>
+        <div class="book-note">Best sci-fi I've read in years. Stayed up until 4 AM to finish it.</div>
+      </div>
+    </div>
+    <div class="reading-item">
+      <span class="book-icon">🧠</span>
+      <div>
+        <div class="book-title">Thinking, Fast and Slow</div>
+        <div class="book-author">Daniel Kahneman</div>
+        <div class="book-note">Changed how I approach debugging. No, really.</div>
+      </div>
+    </div>
+    <div class="reading-item">
+      <span class="book-icon">🏗️</span>
+      <div>
+        <div class="book-title">Designing Data-Intensive Applications</div>
+        <div class="book-author">Martin Kleppmann</div>
+        <div class="book-note">The distributed systems bible. Dog-eared on every chapter.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>🏀 Space Jam Personal HQ &copy; 2024 — <a href="index.html">Home</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script src="js/starfield.js"></script>
+<script src="js/music.js"></script>
+</body>
+</html>

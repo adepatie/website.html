@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📬 Monstars HQ — Contact Me | Space Jam HQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .monstar-wrap {
+      text-align: center;
+      padding: 10px 0;
+    }
+    .monstar-emoji {
+      font-size: 4rem;
+      display: inline-block;
+      animation: monstar-float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(255,0,204,0.7)) drop-shadow(0 0 30px rgba(255,0,204,0.3));
+    }
+    @keyframes monstar-float {
+      0%,100% { transform: translateY(0) rotate(-3deg); }
+      50%      { transform: translateY(-12px) rotate(3deg); }
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 560px) {
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 16px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: var(--font-main);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .social-link .s-icon { font-size: 1.8rem; }
+    .social-link:hover { transform: translateY(-3px); }
+
+    .social-link--github {
+      background: rgba(57,255,20,0.08);
+      color: var(--neon-green);
+      border: 1px solid rgba(57,255,20,0.3);
+    }
+    .social-link--github:hover  { box-shadow: 0 0 20px rgba(57,255,20,0.25); }
+    .social-link--twitter {
+      background: rgba(0,207,255,0.08);
+      color: var(--neon-blue);
+      border: 1px solid rgba(0,207,255,0.3);
+    }
+    .social-link--twitter:hover { box-shadow: 0 0 20px rgba(0,207,255,0.25); }
+    .social-link--linkedin {
+      background: rgba(0,255,224,0.08);
+      color: var(--neon-teal);
+      border: 1px solid rgba(0,255,224,0.3);
+    }
+    .social-link--linkedin:hover { box-shadow: 0 0 20px rgba(0,255,224,0.25); }
+    .social-link--email {
+      background: rgba(255,102,0,0.08);
+      color: var(--neon-orange);
+      border: 1px solid rgba(255,102,0,0.3);
+    }
+    .social-link--email:hover   { box-shadow: 0 0 20px rgba(255,102,0,0.25); }
+    .social-link--codepen {
+      background: rgba(255,0,204,0.08);
+      color: var(--neon-pink);
+      border: 1px solid rgba(255,0,204,0.3);
+    }
+    .social-link--codepen:hover { box-shadow: 0 0 20px rgba(255,0,204,0.25); }
+    .social-link--rss {
+      background: rgba(255,230,0,0.08);
+      color: var(--neon-yellow);
+      border: 1px solid rgba(255,230,0,0.3);
+    }
+    .social-link--rss:hover     { box-shadow: 0 0 20px rgba(255,230,0,0.25); }
+
+    /* Form success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      border-radius: 6px;
+      background: rgba(57,255,20,0.08);
+      border: 1px solid rgba(57,255,20,0.35);
+      color: var(--neon-green);
+      font-family: var(--font-main);
+      font-size: 0.9rem;
+      text-shadow: 0 0 8px rgba(57,255,20,0.5);
+      animation: success-pop 0.4s ease-out;
+    }
+    @keyframes success-pop {
+      0%   { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1);    opacity: 1; }
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(57,255,20,0.1);
+      border: 1px solid rgba(57,255,20,0.4);
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--neon-green);
+      text-shadow: 0 0 6px rgba(57,255,20,0.4);
+    }
+    .dot-available {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      box-shadow: 0 0 6px var(--neon-green);
+      animation: dot-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes dot-pulse {
+      0%,100% { opacity: 1; box-shadow: 0 0 6px var(--neon-green); }
+      50%      { opacity: 0.4; box-shadow: 0 0 2px var(--neon-green); }
+    }
+  </style>
+</head>
+<body>
+<canvas id="starfield-canvas"></canvas>
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <div class="logo-container">
+      <div class="logo-main">Space Jam HQ</div>
+      <span class="logo-sub">✦ Monstars HQ ✦</span>
+    </div>
+    <br>
+    <button class="music-btn" onclick="toggleMusic(this)">🔊 PLAY MUSIC</button>
+  </header>
+
+  <hr class="neon-divider">
+
+  <a href="index.html" class="back-link">← Back to Main Court</a>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-grid">
+      <a href="about.html"    class="nav-btn nav-btn--purple"><span class="btn-icon">🏀</span><span class="btn-label">About Me</span></a>
+      <a href="projects.html" class="nav-btn nav-btn--green" ><span class="btn-icon">🎬</span><span class="btn-label">Projects</span></a>
+      <a href="skills.html"   class="nav-btn nav-btn--teal"  ><span class="btn-icon">⭐</span><span class="btn-label">Skills</span></a>
+      <a href="hobbies.html"  class="nav-btn nav-btn--yellow"><span class="btn-icon">👾</span><span class="btn-label">Hobbies</span></a>
+      <a href="contact.html"  class="nav-btn nav-btn--orange"><span class="btn-icon">📬</span><span class="btn-label">Contact</span></a>
+    </div>
+  </nav>
+
+  <hr class="neon-divider">
+
+  <!-- ══ MONSTAR INTRO ══════════════════════════════ -->
+  <div class="content-panel text-center">
+    <div class="monstar-wrap">
+      <span class="monstar-emoji">👾</span>
+    </div>
+    <h2 class="section-title title--pink" style="justify-content:center; margin-top:12px">
+      Welcome to Monstars HQ
+    </h2>
+    <p>
+      Think of this as the cosmic post office between you and me. Whether you want to
+      collaborate on a project, ask a question, or just say hi — drop a message into
+      the void and I'll get back to you faster than a Monstar steals talent.
+    </p>
+    <div class="mt-12">
+      <span class="availability-badge">
+        <span class="dot-available"></span>
+        Available for freelance &amp; collaborations
+      </span>
+    </div>
+  </div>
+
+  <!-- ══ CONTACT FORM ══════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--orange">📬 Send a Message</h2>
+
+    <div id="form-success" class="form-success">
+      ✅ TRANSMISSION RECEIVED — I'll beam back ASAP! 🚀
+    </div>
+
+    <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+      <div class="two-col">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Space Cadet Name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@galaxy.com" required autocomplete="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="What's the mission?" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell me about your project, idea, or just say hi from across the cosmos..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">🚀 LAUNCH MESSAGE</button>
+    </form>
+  </div>
+
+  <!-- ══ SOCIAL LINKS ══════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--teal">🌐 Find Me in the Galaxy</h2>
+    <div class="social-grid">
+      <a href="#" class="social-link social-link--github">
+        <span class="s-icon">⬡</span>
+        <span>GitHub</span>
+      </a>
+      <a href="#" class="social-link social-link--twitter">
+        <span class="s-icon">🐦</span>
+        <span>Twitter/X</span>
+      </a>
+      <a href="#" class="social-link social-link--linkedin">
+        <span class="s-icon">💼</span>
+        <span>LinkedIn</span>
+      </a>
+      <a href="mailto:hello@example.com" class="social-link social-link--email">
+        <span class="s-icon">📧</span>
+        <span>Email</span>
+      </a>
+      <a href="#" class="social-link social-link--codepen">
+        <span class="s-icon">🖊️</span>
+        <span>CodePen</span>
+      </a>
+      <a href="#" class="social-link social-link--rss">
+        <span class="s-icon">📡</span>
+        <span>Blog/RSS</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ FAQ ════════════════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--yellow">❓ FAQ</h2>
+    <div class="two-col">
+      <div class="card card--yellow">
+        <h3>Do you take freelance work?</h3>
+        <p>Yes! I'm open to interesting projects, especially in web apps, developer tooling, and anything delightfully weird.</p>
+      </div>
+      <div class="card card--blue" style="border-color:rgba(0,207,255,0.3)">
+        <h3>Response time?</h3>
+        <p>Usually within 24–48 hours. If it's urgent, add "URGENT" to the subject and I'll treat it like a fast break.</p>
+      </div>
+      <div class="card card--green">
+        <h3>Open to mentoring?</h3>
+        <p>Absolutely. Junior devs, career changers, students — reach out. I remember struggling and I pay it forward.</p>
+      </div>
+      <div class="card card--purple">
+        <h3>Speaking / Podcasts?</h3>
+        <p>Happy to join a podcast or speak at meetups. Topics: web perf, DX, retro web culture, and Space Jam (obviously).</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>🏀 Space Jam Personal HQ &copy; 2024 — <a href="index.html">Home</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script src="js/starfield.js"></script>
+<script src="js/music.js"></script>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form    = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    // In a real deployment, send to a backend/service (e.g. Formspree, Netlify Forms) here.
+    // TODO: Replace this demo handler with a real form submission endpoint before going live.
+    // For GitHub Pages demo, we just show the success message.
+    form.style.display    = 'none';
+    success.style.display = 'block';
+  }
+</script>
+</body>
+</html>
