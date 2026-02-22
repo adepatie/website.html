@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏀 Player Bios — About Me | Space Jam HQ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .avatar-ring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #2a0050, #050515);
+      border: 3px solid var(--neon-purple);
+      box-shadow: 0 0 20px rgba(204,0,255,0.6), 0 0 50px rgba(204,0,255,0.2), inset 0 0 20px rgba(204,0,255,0.1);
+      font-size: 4.5rem;
+      margin: 0 auto 16px;
+      animation: avatar-pulse 3s ease-in-out infinite;
+    }
+    @keyframes avatar-pulse {
+      0%,100% { box-shadow: 0 0 20px rgba(204,0,255,0.6), 0 0 50px rgba(204,0,255,0.2); }
+      50%      { box-shadow: 0 0 35px rgba(204,0,255,0.9), 0 0 70px rgba(204,0,255,0.4); }
+    }
+    .profile-name {
+      font-family: var(--font-main);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 14px rgba(255,230,0,0.7);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+    .profile-role {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--neon-teal);
+      text-shadow: 0 0 8px rgba(0,255,224,0.5);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    @media (max-width: 520px) {
+      .bio-grid { grid-template-columns: 1fr; }
+    }
+    .bio-row {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+    }
+    .bio-label {
+      flex-shrink: 0;
+      font-family: var(--font-main);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--neon-purple);
+      width: 88px;
+    }
+    .bio-value { color: #d0d0f0; }
+    .timeline { margin-top: 8px; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,207,255,0.1);
+      font-size: 0.82rem;
+    }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-year {
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--neon-blue);
+      text-shadow: 0 0 6px rgba(0,207,255,0.4);
+      text-align: right;
+      padding-right: 12px;
+      border-right: 2px solid rgba(0,207,255,0.3);
+    }
+    .tl-content h4 {
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      color: var(--neon-yellow);
+      margin-bottom: 2px;
+    }
+    .tl-content p { color: #aaaacc; margin: 0; font-size: 0.78rem; }
+  </style>
+</head>
+<body>
+<canvas id="starfield-canvas"></canvas>
+<div class="page-wrapper">
+
+  <header class="site-header">
+    <div class="logo-container">
+      <div class="logo-main">Space Jam HQ</div>
+      <span class="logo-sub">✦ Player Bios ✦</span>
+    </div>
+    <br>
+    <button class="music-btn" onclick="toggleMusic(this)">🔊 PLAY MUSIC</button>
+  </header>
+
+  <hr class="neon-divider">
+
+  <a href="index.html" class="back-link">← Back to Main Court</a>
+
+  <nav aria-label="Main navigation">
+    <div class="nav-grid">
+      <a href="about.html"    class="nav-btn nav-btn--purple"><span class="btn-icon">🏀</span><span class="btn-label">About Me</span></a>
+      <a href="projects.html" class="nav-btn nav-btn--green" ><span class="btn-icon">🎬</span><span class="btn-label">Projects</span></a>
+      <a href="skills.html"   class="nav-btn nav-btn--teal"  ><span class="btn-icon">⭐</span><span class="btn-label">Skills</span></a>
+      <a href="hobbies.html"  class="nav-btn nav-btn--yellow"><span class="btn-icon">👾</span><span class="btn-label">Hobbies</span></a>
+      <a href="contact.html"  class="nav-btn nav-btn--orange"><span class="btn-icon">📬</span><span class="btn-label">Contact</span></a>
+    </div>
+  </nav>
+
+  <hr class="neon-divider">
+
+  <!-- ══ PROFILE ═══════════════════════════════════ -->
+  <div class="content-panel text-center">
+    <div class="avatar-ring">🧑‍💻</div>
+    <div class="profile-name">Alex Space</div>
+    <div class="profile-role">Full-Stack Developer &amp; Digital Astronaut</div>
+
+    <div class="marquee-wrap mt-12">
+      <span class="marquee-inner" style="color:var(--neon-pink)">
+        ✦ FULL-STACK DEVELOPER &nbsp;✦&nbsp; OPEN SOURCE CONTRIBUTOR &nbsp;✦&nbsp; COFFEE ENTHUSIAST &nbsp;✦&nbsp; BASKETBALL FAN SINCE '96 &nbsp;✦&nbsp; BUILDING COOL STUFF ON THE INTERNET &nbsp;✦&nbsp;
+      </span>
+    </div>
+
+    <div class="bio-grid mt-16">
+      <div>
+        <div class="bio-row"><span class="bio-label">Jersey #</span><span class="bio-value">42 (of course)</span></div>
+        <div class="bio-row"><span class="bio-label">Position</span><span class="bio-value">Full-Stack Dev</span></div>
+        <div class="bio-row"><span class="bio-label">Height</span><span class="bio-value">6'0" (182 cm)</span></div>
+        <div class="bio-row"><span class="bio-label">Hometown</span><span class="bio-value">The Internet</span></div>
+      </div>
+      <div>
+        <div class="bio-row"><span class="bio-label">Team</span><span class="bio-value">Team Web</span></div>
+        <div class="bio-row"><span class="bio-label">Exp</span><span class="bio-value">5+ Years</span></div>
+        <div class="bio-row"><span class="bio-label">Specialty</span><span class="bio-value">JavaScript / TypeScript</span></div>
+        <div class="bio-row"><span class="bio-label">Favorite Bug</span><span class="bio-value">Off-by-one error 🐛</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ORIGIN STORY ══════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--pink">📖 Origin Story</h2>
+    <p>
+      It started with a blinking cursor on a green screen terminal in my parents' basement — a kid who watched
+      <em>Space Jam</em> one too many times and decided that the internet was the greatest court in the universe.
+    </p>
+    <p>
+      I taught myself HTML at age 12 by dissecting every "View Source" I could find. Tables were my best friends.
+      Animated GIFs were my art medium. The web was my playground, and I've never left.
+    </p>
+    <p>
+      Today I build full-stack web applications, contribute to open-source projects, and mentor junior developers.
+      I believe good code is like a perfect alley-oop: clean, fast, and satisfying to watch.
+    </p>
+  </div>
+
+  <!-- ══ TIMELINE ══════════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--blue">📅 Career Timeline</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <h4>Senior Developer @ Acme Corp</h4>
+          <p>Leading a team of 6 engineers, architecting cloud-native solutions at scale.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div class="tl-content">
+          <h4>Mid-level Developer @ Startup XYZ</h4>
+          <p>Built real-time data pipelines and customer-facing React/Node apps.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-content">
+          <h4>Junior Developer @ Agency ABC</h4>
+          <p>Delivered 15+ client websites; first exposure to CI/CD and agile practices.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2018</div>
+        <div class="tl-content">
+          <h4>B.Sc. Computer Science</h4>
+          <p>Graduated with honours. Minor in Mathematics. Thesis on distributed systems.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1996</div>
+        <div class="tl-content">
+          <h4>First Saw Space Jam in Cinemas 🏀</h4>
+          <p>Watched it 11 times. Career choice solidified. No regrets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FUN FACTS ═════════════════════════════════ -->
+  <div class="content-panel">
+    <h2 class="section-title title--green">🎲 Fun Facts</h2>
+    <div class="three-col">
+      <div class="card card--green">
+        <h3>🌙 Night Owl</h3>
+        <p>My best code is written between midnight and 3 AM. The bugs are also written then.</p>
+      </div>
+      <div class="card card--purple">
+        <h3>☕ Caffeine Powered</h3>
+        <p>Estimated lifetime coffee consumption: 2,000+ cups. Still counting.</p>
+      </div>
+      <div class="card card--teal">
+        <h3>🎸 Side Quest</h3>
+        <p>Self-taught guitarist. I can play the Space Jam theme (badly) on guitar.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>🏀 Space Jam Personal HQ &copy; 2024 — <a href="index.html">Home</a> · <a href="contact.html">Contact</a></p>
+</footer>
+
+<script src="js/starfield.js"></script>
+<script src="js/music.js"></script>
+</body>
+</html>
